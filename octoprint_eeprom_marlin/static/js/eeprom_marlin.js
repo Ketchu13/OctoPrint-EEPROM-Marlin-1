@@ -376,6 +376,105 @@ $(function () {
                 return steps;
             })();
 
+            eeprom.tmc_current = (function () {
+                var tmc_current = {};
+
+                tmc_current.X = ko.observable();
+                //tmc_current.X1 = ko.observable();
+                tmc_current.Y = ko.observable();
+                //tmc_current.Y1 = ko.observable();
+                tmc_current.Z = ko.observable();
+                //tmc_current.Z1 = ko.observable();
+                tmc_current.E = ko.observable();
+                //tmc_current.E1 = ko.observable();
+
+                tmc_current.visible = ko.computed(function () {
+                    for (let param in tmc_current) {
+                        if (param === "visible") {
+                            continue;
+                        }
+                        if (tmc_current[param]() !== null) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+
+                return tmc_current;
+            })();
+
+            eeprom.tmc_stealthchop = (function () {
+                var tmc_stealthchop = {};
+
+                tmc_stealthchop.X = ko.observable();
+                tmc_stealthchop.Y = ko.observable();
+                tmc_stealthchop.Z = ko.observable();
+                tmc_stealthchop.E = ko.observable();
+
+                tmc_stealthchop.visible = ko.computed(function () {
+                    for (let param in tmc_stealthchop) {
+                        if (param === "visible") {
+                            continue;
+                        }
+                        if (tmc_stealthchop[param]() !== null) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+
+                return tmc_stealthchop;
+            })();
+
+            eeprom.tmc_threshold = (function () {
+                var tmc_threshold = {};
+
+                tmc_threshold.X = ko.observable();
+                //tmc_threshold.X1 = ko.observable();
+                tmc_threshold.Y = ko.observable();
+                //tmc_threshold.Y1 = ko.observable();
+                tmc_threshold.Z = ko.observable();
+                //tmc_threshold.Z1 = ko.observable();
+                tmc_threshold.E = ko.observable();
+                //tmc_threshold.E1 = ko.observable();
+
+                tmc_threshold.visible = ko.computed(function () {
+                    for (let param in tmc_threshold) {
+                        if (param === "visible") {
+                            continue;
+                        }
+                        if (tmc_threshold[param]() !== null) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+
+                return tmc_threshold;
+            })();
+
+            eeprom.tmc_slshoming = (function () {
+                var tmc_slshoming = {};
+
+                tmc_slshoming.X = ko.observable();
+                tmc_slshoming.Y = ko.observable();
+                tmc_slshoming.Z = ko.observable();
+
+                tmc_slshoming.visible = ko.computed(function () {
+                    for (let param in tmc_slshoming) {
+                        if (param === "visible") {
+                            continue;
+                        }
+                        if (tmc_slshoming[param]() !== null) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+
+                return tmc_slshoming;
+            })();
+
             eeprom.filament_change = (function () {
                 var filament_change = {};
 
@@ -713,6 +812,111 @@ $(function () {
                     units: "steps/mm",
                 },
             ],
+
+            tmc_current: [
+                {
+                    label: "X current",
+                    value: self.eeprom.tmc_current.X,
+                    units: "mA",
+                },/*
+                {
+                    label: "X1 current",
+                    value: self.eeprom.tmc_current.X1,
+                    units: "mA",
+                },*/
+                {
+                    label: "Y current",
+                    value: self.eeprom.tmc_current.Y,
+                    units: "mA",
+                },/*
+                {
+                    label: "Y1 current",
+                    value: self.eeprom.tmc_current.Y1,
+                    units: "mA",
+                },*/
+                {
+                    label: "Z current",
+                    value: self.eeprom.tmc_current.Z,
+                    units: "mA",
+                },/*
+                {
+                    label: "Z1 current",
+                    value: self.eeprom.tmc_current.Z1,
+                    units: "mA",
+                },*/
+                {
+                    label: "E current",
+                    value: self.eeprom.tmc_current.E,
+                    units: "mA",
+                },/*
+                {
+                    label: "E1 current",
+                    value: self.eeprom.tmc_current.E1,
+                    units: "mA",
+                },*/
+            ],
+            tmc_stealthchop: [
+                {
+                    label: "X enabled",
+                    value: self.eeprom.tmc_stealthchop.X,
+                    units: "0/1",
+                },
+                {
+                    label: "Y enabled",
+                    value: self.eeprom.tmc_stealthchop.Y,
+                    units: "0/1",
+                },
+                {
+                    label: "Z enabled",
+                    value: self.eeprom.tmc_stealthchop.Z,
+                    units: "0/1",
+                },
+                {
+                    label: "E enabled",
+                    value: self.eeprom.tmc_stealthchop.E,
+                    units: "0/1",
+                },
+            ],
+            tmc_threshold: [
+                {
+                    label: "X hybrid threshold",
+                    value: self.eeprom.tmc_threshold.X,
+                    units: "mm/s",
+                },
+                {
+                    label: "Y hybrid threshold",
+                    value: self.eeprom.tmc_threshold.Y,
+                    units: "mm/s",
+                },
+                {
+                    label: "Z hybrid threshold",
+                    value: self.eeprom.tmc_threshold.Z,
+                    units: "mm/s",
+                },
+                {
+                    label: "E hybrid threshold",
+                    value: self.eeprom.tmc_threshold.E,
+                    units: "mm/s",
+                },
+            ],
+            tmc_slshoming: [
+                {
+                    label: "X enabled",
+                    value: self.eeprom.tmc_slshoming.X,
+                    units: null,
+                },
+                {
+                    label: "Y enabled",
+                    value: self.eeprom.tmc_slshoming.Y,
+                    units: null,
+                },
+                {
+                    label: "Z enabled",
+                    value: self.eeprom.tmc_stealthchop.Z,
+                    units: null,
+                },
+            ],
+
             filament_change: [
                 {
                     label: "Load length",

@@ -1,0 +1,28 @@
+<div data-bind="visible: eeprom.tmc_current.visible">
+    <strong>{{ _("Current") }}</strong>
+    <hr>
+    <!-- ko foreach: UI.tmc_current -->
+    {% include "snippets/single_field.jinja2" %}
+    <!-- /ko -->
+</div>
+<div data-bind="visible: eeprom.tmc_threshold.visible">
+    <strong>{{ _("Threshold") }}</strong>
+    <hr>
+    <!-- ko foreach: UI.tmc_threshold -->
+    {% include "snippets/single_field.jinja2" %}
+    <!-- /ko -->
+</div>
+<div data-bind="visible: eeprom.tmc_stealthchop.visible">
+    <strong>{{ _("Stealthchop") }}</strong>
+    <hr>
+    <!-- ko foreach: UI.tmc_stealthchop -->
+    {% include "snippets/single_field.jinja2" %}
+    <!-- /ko -->
+</div>
+<div data-bind="visible: eeprom.tmc_slshoming.visible">
+    <strong>{{ _("Sls Homming") }}</strong>
+    <hr>
+    <!-- ko foreach: UI.tmc_slshoming -->
+    {% include "snippets/single_field.jinja2" %}
+    <!-- /ko -->
+</div>

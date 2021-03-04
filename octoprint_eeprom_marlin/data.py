@@ -23,6 +23,12 @@ COMMAND_PARAMS = {
     "M666": ["X", "Y", "Z"],
     "M665": ["B", "H", "L", "R", "S", "X", "Y", "Z"],
     "M900": ["K"],
+
+    "M569": ["S", "X", "Y", "Z"],
+    "M906": ["X", "Y", "Z", "E"],
+    "M913": ["X", "Y", "Z", "E"],
+    "M914": ["X", "Y", "Z"],
+
     "M200": ["D"],
     "M301": ["P", "I", "D"],
     "M304": ["P", "I", "D"],
@@ -42,6 +48,12 @@ COMMAND_NAMES = {
     "M666": "endstop",
     "M665": "delta",
     "M900": "linear",
+
+    "M569": "tmc_stealthchop",
+    "M906": "tmc_current",
+    "M913": "tmc_threshold",
+    "M914": "tmc_slshoming",
+
     "M200": "filament",
     "M301": "hotend_pid",
     "M304": "bed_pid",
@@ -131,6 +143,12 @@ class EEPROMData:
         self.autolevel = IndividualData("autolevel", "M420", ["S", "Z"])
         self.material1 = IndividualData("material1", "M145", ["S", "B", "H", "F"])
         self.material2 = IndividualData("material2", "M145", ["S", "B", "H", "F"])
+
+        self.tmc_current     = IndividualData("tmc_current"     , "M906", ["X", "Y", "Z", "E"])
+        self.tmc_stealthchop = IndividualData("tmc_stealthchop" , "M569", ["S", "X", "Y", "Z", "E"])
+        self.tmc_threshold   = IndividualData("tmc_threshold"   , "M913", ["X", "Y", "Z", "T0 E"])
+        self.tmc_slshoming   = IndividualData("tmc_slshoming"   , "M914", ["X", "Y", "Z"])
+
         self.filament_change = IndividualData(
             "filament_change", "M603", COMMAND_PARAMS["M603"]
         )
