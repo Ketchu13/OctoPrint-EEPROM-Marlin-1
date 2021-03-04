@@ -63,7 +63,7 @@ plugin_ignored_packages = []
 # Example:
 #     plugin_requires = ["someDependency==dev"]
 #     additional_setup_parameters = {"dependency_links": [
-#         "https://github.com/someUser/someRepo/archive/master.zip#egg=someDependency-dev"]}
+#       "https://github.com/someUser/someRepo/archive/master.zip#egg=someDependency-dev"]}
 additional_setup_parameters = {}
 
 ########################################################################################################################
@@ -78,7 +78,6 @@ except:
         "the same python installation that OctoPrint is installed under?"
     )
     import sys
-
     sys.exit(-1)
 
 setup_parameters = octoprint_setuptools.create_plugin_setup_parameters(
@@ -100,7 +99,6 @@ setup_parameters = octoprint_setuptools.create_plugin_setup_parameters(
 
 if len(additional_setup_parameters):
     from octoprint.util import dict_merge
-
     setup_parameters = dict_merge(setup_parameters, additional_setup_parameters)
 
 setup(**setup_parameters)

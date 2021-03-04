@@ -35,4 +35,7 @@
     <li data-bind="visible: eeprom.advanced.visible">
         <a data-toggle="tab" href="#eeprom_advanced">Advanced</a>
     </li>
+    <li data-bind="visible: eeprom.tmc_current.visible() || eeprom.tmc_threshold.visible() || eeprom.tmc_stealthchop.visible() || eeprom.tmc_slshoming.visible()">
+        <a data-toggle="tab" href="#eeprom_tmc_drivers">TMC Drivers</a>
+    </li>
 </ul>
